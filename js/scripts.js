@@ -93,12 +93,15 @@ Castle.prototype = new Piece();
 Castle.prototype.getValidMoves = function(n = 1) {
     let validMoves = [];
 
-    for (let testX = 0; testX < 8; testX++) {
-        for (let testY = 0; testY < 8; testY++) {
+    for (let testX = 0; testX < 9; testX++) {
+        for (let testY = 0; testY < 9; testY++) {
             let toSquare = getSquare(testX, testY);
+            console.log(testX, testY)
 
             if (toSquare) {
-                let moveResult = this.isValidMove(toSquare, n);
+                console.log(testX)
+                console.log(testY)
+                let moveResult = this.isValidMove(getSquare(testX, testY));
 
                 if (moveResult.valid) {
                     validMoves.push({ toSquare, capture: moveResult.capture });
@@ -157,8 +160,8 @@ Knight.prototype = new Piece();
 Knight.prototype.getValidMoves = function(n = 1) {
     let validMoves = [];
 
-    for (let testX = 0; testX < 8; testX++) {
-        for (let testY = 0; testY < 8; testY++) {
+    for (let testX = 0; testX < 9; testX++) {
+        for (let testY = 0; testY < 9; testY++) {
             let toSquare = getSquare(testX, testY);
 
             if (toSquare) { // Check if toSquare is defined
@@ -212,8 +215,8 @@ Bishop.prototype = new Piece();
 Bishop.prototype.getValidMoves = function(n = 1) {
     let validMoves = [];
 
-    for (let testX = 0; testX < 8; testX++) {
-        for (let testY = 0; testY < 8; testY++) {
+    for (let testX = 0; testX < 9; testX++) {
+        for (let testY = 0; testY < 9; testY++) {
             let toSquare = getSquare(testX, testY);
 
             if (toSquare) { // Check if toSquare is defined
@@ -277,8 +280,8 @@ Queen.prototype = new Piece();
 Queen.prototype.getValidMoves = function(n = 1) {
     let validMoves = [];
 
-    for (let testX = 0; testX < 8; testX++) {
-        for (let testY = 0; testY < 8; testY++) {
+    for (let testX = 0; testX < 9; testX++) {
+        for (let testY = 0; testY < 9; testY++) {
             let toSquare = getSquare(testX, testY);
 
             if (toSquare) { // Check if toSquare is defined
@@ -342,8 +345,8 @@ King.prototype = new Piece();
 King.prototype.getValidMoves = function(n = 1) {
     let validMoves = [];
 
-    for (let testX = 0; testX < 8; testX++) {
-        for (let testY = 0; testY < 8; testY++) {
+    for (let testX = 0; testX < 9; testX++) {
+        for (let testY = 0; testY < 9; testY++) {
             let toSquare = getSquare(testX, testY);
 
             if (toSquare) { // Check if toSquare is defined
