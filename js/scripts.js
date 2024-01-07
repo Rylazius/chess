@@ -1133,3 +1133,60 @@ let nextTurn = function(){
         document.getElementById("turnInfo").innerHTML = "<b>White</b> turn";
 	}
 }
+
+function generateFEN(pieces) {
+    let board = Array(8).fill().map(() => Array(8).fill(''));
+
+    pieces.forEach(piece => {
+        let char;
+        switch(piece.type) {
+            case 'king':
+                char = piece.color === 'white' ? 'K' : 'k';
+                break;
+            case 'queen':
+                char = piece.color === 'white' ? 'Q' : 'q';
+                break;
+            case 'rook':
+                char = piece.color === 'white' ? 'R' : 'r';
+                break;
+            case 'bishop':
+                char = piece.color === 'white' ? 'B' : 'b';
+                break;
+            case 'knight':
+                char = piece.color === 'white' ? 'N' : 'n';
+                break;
+            case 'pawn':
+                char = piece.color === 'white' ? 'P' : 'p';
+                break;
+            case 'castle':
+                char = piece.color === 'white' ? 'R' : 'r';
+                break;
+            default:
+                return;
+        }
+        board[piece.y - 1][piece.x - 1] = char;
+    });
+
+    let fen = '';
+    for(let row of board) {
+        let emptyCount = 0;
+        for(let cell of row) {
+            if(cell === '') {
+                emptyCount++;
+            } else {
+                if(emptyCount > 0) {
+                    fen += emptyCount;
+                    emptyCount = 0;
+                }
+                fen += cell;
+            }
+        }
+        if(emptyCount > 0) {
+            fen += emptyCount;
+        }
+        fen += '/';
+    }
+
+    fen = fen.slice(0, -1);
+    return fen;
+}
