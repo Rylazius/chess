@@ -29,8 +29,9 @@
 	</div>
 	<script type="text/javascript" src="js/scripts.js"></script>
 	<div id="settings">
-		<p>Settings</p>
-		<input placeholder="setting o day"></input>
+		<p>Debug</p>
+		<button onclick="navigator.clipboard.writeText(generateFEN(pieces))">Copy FEN</button>
+		<button onclick="nextTurn()">Switch</button>
 	</div>
 </body>
 </html>
